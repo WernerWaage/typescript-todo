@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/dest/script.js" defer></script>
+    <script src="/dest/script.js" type="module" ></script>
     <title>Werners Boilerplate</title>
 <style>
 body {
@@ -17,8 +17,13 @@ body {
 </style>
   </head>
 
-  
+
   <body>
+    <ul id="list"></ul>
+    <form id="new-task-form">
+        <input type="text"  id="new-task-form" placeholder="Add a task...">
+        <button type="submit">Add</button>
+    </form>
     <div id="root"></div>
     
   </body>
