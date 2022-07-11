@@ -9,7 +9,7 @@
     "format code 🧾": "prettier --write \"src/**/*.{ts,js}\"",
     "=====": "node -v",
     "lint ": "prettier --check \"src/**/*.{ts,js}\"",
-    "build:css": "node-sass -r src -o build/dist/css"
+    "build:css": "node-sass -r src -o ./public"
   },
   "dependencies": {
     "@adobe/lit-mobx": "^2.0.0",
