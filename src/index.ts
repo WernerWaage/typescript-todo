@@ -6,10 +6,61 @@ import type { Task } from './types/task.type';
 import { Person } from './classes/person.class'
 import { makeObservable, observable, action } from "mobx"
 import './components/my-element.ts';
-import { html, TemplateResult } from 'lit';
+import { html, LitElement, render, TemplateResult } from 'lit';
 import { MobxLitElement } from '@adobe/lit-mobx';
+import store from './store'
+
+// Lit element components:
+import './components/simple-greeting/simple-greeting';
+
+function TodoListItems() {
+ 
+    // { store.todos.map(task => ((task.completed) ? <li>{ task.title } < /li> : <li>{task.title}</li >))) }
+}
+
+
+
+
+
+
+
+class MyElement extends LitElement {
+  myString: unknown;
+    myArray: string[];
+    myBool: boolean;
+  static get properties() {
+    return {
+      myString: { type: String },
+      myArray: { type: Array },
+      myBool: { type: Boolean }
+    };
+  }
+  constructor() {
+    super();
+    this.myString = 'Hello World';
+    this.myArray = ['an','array','of','test','data'];
+    this.myBool = true;
+  }
+  render() {
+    return html`
+      <p>${this.myString}</p>
+      <ul>
+        ${this.myArray.map(i => html`<li>${i}</li>`)}
+      </ul>
+      ${this.myBool?
+        html`<p>Render some HTML if myBool is true</p>`:
+        html`<p>Render some other HTML if myBool is false</p>`}
+    `;
+  }
+}
+
+customElements.define('my-element2', MyElement);
+
+
 
 const person = new Person('John')
+const TodoListObserver = observable(person); 
+
 
 console.log(uuidv4())
 console.log('Typescript loaded  🦾 👾')
@@ -84,39 +135,3 @@ function getLoadTimes():number {
 }
 
 
-
-
-// create a mobx observable
-class Counter {
-    // @observable
-    public count = 0;
-
-    // @action
-    public increment() {
-        this.count++;
-    }
-}
-
-// create instance that can be shared across components
-const counter = new Counter();
-
-
-// create a new custom element, and use the base MobxLitElement class
-// alternatively you can use the MobxReactionUpdate mixin, e.g. `class MyElement extends MobxReactionUpdate(LitElement)`
-// @customElement('my-element')
-export class MyElement extends MobxLitElement {
-    private counter = counter;
-
-    // any observables accessed in the render method will now trigger an update
-    public render(): TemplateResult {
-        return html`
-            Count is ${this.counter.count}
-            <br />
-            <button @click=${this.incrementCount}>Add</button>
-        `;
-    }
-
-    private incrementCount() {
-        this.counter.increment();
-    }
-}
