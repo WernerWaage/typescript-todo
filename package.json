@@ -3,14 +3,16 @@
   "description": "",
   "version": "0.0.1",
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
-    "test": "jest",
-    "format": "prettier --write \"src/**/*.{ts,js}\"",
-    "lint": "prettier --check \"src/**/*.{ts,js}\""
+    "start 🟢": "snowpack dev",
+    "build 🎁": "snowpack build",
+    "test 🐞": "jest",
+    "format code 🧾": "prettier --write \"src/**/*.{ts,js}\"",
+    "=====":"node -v",
+    "lint ": "prettier --check \"src/**/*.{ts,js}\""
   },
   "dependencies": {
     "canvas-confetti": "^1.2.0",
+    "mobx": "^6.6.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -20,9 +22,9 @@
     "@types/snowpack-env": "^2.3.3",
     "@types/uuid": "^8.3.4",
     "jest": "^28.1.2",
-    "ts-jest": "^28.0.5",
     "prettier": "^2.2.1",
     "snowpack": "^3.3.7",
+    "ts-jest": "^28.0.5",
     "typescript": "^4.2.4"
   },
   "repository": {
@@ -35,5 +37,5 @@
   "bugs": {
     "url": "https://github.com/WernerWaage/typescript-todo/issues"
   },
-  "homepage": "https://github.com/WernerWaage/typescript-todo" 
+  "homepage": "https://github.com/WernerWaage/typescript-todo"
 }

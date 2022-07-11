@@ -1,25 +1,17 @@
-import confetti from 'canvas-confetti'
+export {};
+  
 import { v4 as uuidv4 } from 'uuid'
+import type { Task } from './types/task.type';
+import { Person } from './classes/person.class'
+const person = new Person('John')
 console.log(uuidv4())
 
-// confetti.create(document.getElementById('confetti') as HTMLCanvasElement, {
-//   resize: true,
-//   useWorker: true,
-// })({ particleCount: 200, spread: 200 });
-
-console.log('Typescript loaded')
+console.log('Typescript loaded  🦾 👾')
 
 const list = document.querySelector<HTMLUListElement>('#list')
 const form = document.getElementById('new-task-form') as HTMLFormElement | null
 const input = document.querySelector<HTMLInputElement>('#new-task-title')
 
-// Type declarations
-type Task = {
-    id: string
-    title: string
-    completed: boolean
-    createdAt: Date
-}
 
 // On load:
 const tasks: Task[] = loadTasks()

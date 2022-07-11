@@ -24,6 +24,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+    /* This property needs to be true for mobx to work */
     "useDefineForClassFields": true
   }
 }
