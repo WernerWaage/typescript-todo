@@ -1,14 +1,51 @@
-#img {
-  display: block;
-  margin: auto;
-  height: 128px;
-  width: 128px;
-  padding: 2rem;
+h1,h2,h3,h4 {
+  font-family: 'Courier New', Courier, monospace;
+}
+h1 {
+  font-size: 2.2em;
 }
 
-#canvas {
-  display: block;
-  margin: 2rem auto;
-  width: 540px;
-  height: 540px;
+h2 {
+  font-size: 2.0em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.6em;
+}
+
+h5 {
+  font-size: 1.4em;
+}
+p {
+  font-size: 1.2em;
+}
+
+body {
+  font-family: 'verdana', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+}
+
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: aliceblue;
+}
+.clear {
+  clear: both;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
 }

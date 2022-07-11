@@ -1,8 +1,12 @@
 # Werners typescript template
 
+Stack:
+
 -   Bootstrapped with Create Snowpack App (CSA).
 -   Jest for testing
--   mobx
+-   Prettier for code formatting
+-   MobX (instead of Redux)
+-   Lit (instead of react)
 
 ## Available Scripts
 

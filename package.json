@@ -8,12 +8,14 @@
     "test 🐞": "jest",
     "format code 🧾": "prettier --write \"src/**/*.{ts,js}\"",
     "=====": "node -v",
-    "lint ": "prettier --check \"src/**/*.{ts,js}\""
+    "lint ": "prettier --check \"src/**/*.{ts,js}\"",
+    "build:css": "node-sass -r src -o build/dist/css"
   },
   "dependencies": {
     "@adobe/lit-mobx": "^2.0.0",
     "lit": "^2.2.7",
     "mobx": "^6.6.1",
+    "node-sass": "^7.0.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
