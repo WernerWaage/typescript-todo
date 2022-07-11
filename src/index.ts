@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from 'uuid'
 import type { Task } from './types/task.type';
 import { Person } from './classes/person.class'
 import { makeObservable, observable, action } from "mobx"
-import { LitElement, html } from 'lit-element';
-import './src/components/my-elements.js';
-
+import './components/my-element.ts';
+import { html, TemplateResult } from 'lit';
+import { MobxLitElement } from '@adobe/lit-mobx';
 
 const person = new Person('John')
 
