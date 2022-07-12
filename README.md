@@ -22,3 +22,22 @@ You will also see any lint errors in the console.
 
 Builds a static copy of your site to the `build/` folder.
 Your app is ready to be deployed!
+
+## Lit examples
+
+```
+<!-- Child nodes -->
+<h1>${this.pageTitle}</h1>
+
+<!-- Attribute -->
+<div class=${this.myTheme}></div>
+
+<!-- Boolean attribute -->
+<p ?hidden=${this.isHidden}>I may be in hiding.</p>
+
+<!-- Property -->
+<input .value=${this.value}>
+
+<!-- Event listener -->
+<button @click=${() => {console.log("You clicked a button.")}}>...</button>
+```
