@@ -6,6 +6,7 @@
     "moduleResolution": "node",
     "jsx": "preserve",
     "baseUrl": "./",
+    "experimentalDecorators": true, // 👈️ must be enabled for Lit decorators to work (Subject to change, but is in the official documentation https://lit.dev/ 12.07.2022)
     /* paths - import rewriting/resolving */
     "paths": {
       // If you configured any Snowpack aliases, add them here.

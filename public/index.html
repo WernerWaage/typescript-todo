@@ -10,6 +10,8 @@
   <link rel="stylesheet" type="text/css" href="/style.css" />
   <script type="module" src="/dist/index.js"></script>
 
+  <script type="module" src="/dist/components/name-tag.js"></script>
+
   <title>Werners typescript template</title>
 </head>
 
@@ -28,6 +30,13 @@
     </form>
 
     <my-element></my-element>
+
+    <simple-greeting name="World1"></simple-greeting>
+
+    <name-tag></name-tag>
+
+    <button @click=${this.handleClick}>Click me!</button>
+
   </div>
 </body>
 

@@ -6,7 +6,9 @@ import type { Task } from './types/task.type';
 import { Person } from './classes/person.class'
 import { makeObservable, observable, action } from "mobx"
 import './components/my-element.ts';
-import { html, LitElement, render, TemplateResult } from 'lit';
+import { html, css, LitElement, render, TemplateResult } from 'lit';
+import {customElement, property} from 'lit/decorators.js';
+
 import { MobxLitElement } from '@adobe/lit-mobx';
 import store from './store'
 
