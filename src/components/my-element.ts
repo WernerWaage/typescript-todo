@@ -1,12 +1,9 @@
-import {LitElement, html} from 'lit';
+import { LitElement, html } from 'lit'
 
 class MyElement extends LitElement {
-
-  render() {
-    return html`
-      <div>Hello from MyElement!</div>
-    `;
-  }
+    render() {
+        return html` <div>Hello from MyElement!</div> `
+    }
 }
 
-customElements.define('my-element', MyElement);
+customElements.define('my-element', MyElement)
