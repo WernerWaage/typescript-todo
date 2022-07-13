@@ -1,7 +1,20 @@
-import { LitElement, html, css } from 'lit'
+import { LitElement, html, css, PropertyValues } from 'lit'
 import { customElement, state, property, query } from 'lit/decorators.js'
 import type { Task } from 'src/types/task.type'
 import { v4 as uuidv4 } from 'uuid'
+
+export function saveTasks(tasks: Task[]) {
+    localStorage.setItem('TASKS', JSON.stringify(tasks))
+}
+
+export function loadTasks(): Task[] {
+    const tasksString = localStorage.getItem('TASKS')
+    if (tasksString) {
+        return JSON.parse(tasksString)
+    } else {
+        return []
+    }
+}
 
 @customElement('todo-list')
 export class ToDoList extends LitElement {
@@ -10,42 +23,82 @@ export class ToDoList extends LitElement {
             text-decoration-line: line-through;
             color: #777;
         }
+        ul {
+            list-style-type: none;
+        }
     `
-
     @state()
     private _listItems: Task[] = loadTasks()
-    private _selectedItem: string | null = null
+    private _selectedItemTask: Task = {} as Task
+    _feedback: string = ''
 
-    @property()
-    hideCompleted = false
+    @query('#newitem')
+    input!: HTMLInputElement
+
+    hideCompleted: boolean = false
+    selectedItem!: Task
+
+    private _deleteThing(index: number) {
+        this._listItems = this._listItems.filter((_, i) => i !== index)
+        this._feedback = 'Item deleted'
+        saveTasks(this._listItems)
+    }
+
+    private _updateThing(item: Task) {
+        console.log(item)
+        this.requestUpdate()
+    }
 
     render() {
+        // Filter items before rendering:
         const items = this.hideCompleted
             ? this._listItems.filter((item) => !item.completed)
             : this._listItems
 
-        const todos = html`
+        const renderTodoList = html`
             <ul>
                 ${items.map(
-                    (item) =>
+                    (item, index) =>
                         html` <li
                             class=${item.completed ? 'completed' : ''}
                             @click=${() => this.selectItem(item)}
                         >
-                            ${item.title}
+                            <input
+                                type="checkbox"
+                                ?checked=${item.completed}
+                                @change=${this.toggleTaskCompleted}
+                            />
+                            ${this._selectedItemTask!.id == item.id
+                                ? html`<span>${item.title}*</span>
+                                      <button
+                                          @click=${() =>
+                                              this._updateThing(item)}
+                                      >
+                                          Edit
+                                      </button>
+                                      <button
+                                          @click=${() =>
+                                              this._deleteThing(index)}
+                                      >
+                                          Delete
+                                      </button> `
+                                : html`<span>${item.title}</span>`}
                         </li>`
                 )}
             </ul>
         `
         const caughtUpMessage = html` <p>You're all caught up!</p> `
-        const todosOrMessage = items.length > 0 ? todos : caughtUpMessage
+        const renderPlaceholder =
+            items.length > 0 ? renderTodoList : caughtUpMessage
 
+        // Main output of the component:
         return html`
             <h2>To Do</h2>
-            ${todosOrMessage}
+            ${this._feedback} ${renderPlaceholder}
             <input id="newitem" aria-label="New item" />
             <button @click=${this.addToDo}>Add</button>
             <br />
+
             <label>
                 <input
                     type="checkbox"
@@ -54,13 +107,6 @@ export class ToDoList extends LitElement {
                 />
                 Hide completed
             </label>
-            <div id="selectedItem">
-                <p>Selected item:</p>
-                ${this._selectedItem
-                    ? html`<todo-item .item=${this._selectedItem}></todo-item>`
-                    : ''}
-                ${this._selectedItem ? html`<p>${this._selectedItem}</p>` : ''}
-            </div>
         `
     }
 
@@ -70,20 +116,24 @@ export class ToDoList extends LitElement {
     }
 
     selectItem(item: Task) {
-        console.log('selectItem', item)
-        this._selectedItem = item.title
-        console.log(this._selectedItem)
-        // this.requestUpdate();
-
-        // Show the selected item in a sepratate box:
+        // Save the selected item for manipulation in the component
+        this._selectedItemTask = item
+        this.requestUpdate()
     }
 
     setHideCompleted(e: Event) {
         this.hideCompleted = (e.target as HTMLInputElement).checked
+        this.requestUpdate()
     }
 
-    @query('#newitem')
-    input!: HTMLInputElement
+    toggleTaskCompleted(e: Event) {
+        // Is there a secret Lit trick to do this simpler?
+        let _checked = (e.target as HTMLInputElement).checked
+        if (this._selectedItemTask) {
+            this._selectedItemTask.completed = _checked
+        }
+        saveTasks(this._listItems)
+    }
 
     addToDo() {
         const newTask: Task = {
@@ -92,22 +142,29 @@ export class ToDoList extends LitElement {
             createdAt: new Date(),
             id: uuidv4(),
         }
-        this._listItems = [...this._listItems, newTask]
-        saveTasks(this._listItems)
-        this.input.value = ''
+        if (newTask.title.length == 0) {
+            this._feedback = 'Title too short'
+            this.requestUpdate()
+        } else {
+            this._listItems = [...this._listItems, newTask]
+            this._feedback = 'New task created'
+            saveTasks(this._listItems)
+            this.input.value = ''
+        }
     }
-}
 
-export function saveTasks(tasks: Task[]) {
-    localStorage.setItem('TASKS', JSON.stringify(tasks))
-}
+    // Lifecycle methods
+    // Unused methods for reference
+    protected updated(changedProperties: PropertyValues<this>): void {
+        if (changedProperties.has('selectedItem')) {
+            console.log('Selected item updated')
+        }
+    }
 
-export function loadTasks(): Task[] {
-    const tasksString = localStorage.getItem('TASKS')
-    if (tasksString) {
-        // tasks.push(...JSON.parse(tasksString));
-        return JSON.parse(tasksString)
-    } else {
-        return []
+    // If one property should update another, before rendering out the component
+    willUpdate(changedProperties: PropertyValues<this>) {
+        if (changedProperties.has('selectedItem')) {
+            // this.backward = this.forward.split('').reverse().join('');
+        }
     }
 }
