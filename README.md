@@ -4,8 +4,10 @@ Project to help me learn more about MobX and Lit
 
 Stack:
 
+-   Visual Studio Code
+-   Node.js
 -   TypesScript
--   Bootstrapped with Create Snowpack App (CSA).
+-   Snowpack App (CSA) build tool.
 -   MobX (instead of Redux)
 -   Lit 2.0 (LitElement update, instead of React)
 -   Jest for testing

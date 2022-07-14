@@ -1,0 +1,41 @@
+
+
+$padding: 6px;
+$background: #c0c0c0;
+$textColor: #000;
+$headerColor: #2D3137;
+
+html,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, Sans Serif;
+  padding: 1rem 2rem;
+  margin: 0;
+  padding: 0;
+  background-color: $background;
+}
+
+h1 {
+  color: $headerColor;
+}
+
+li{
+  list-style: upper-alpha;
+}
+
+p {
+  color:orange;
+}
+
+input {
+  border: 1px solid #e51010;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px 0;
+  width: 100%;
+}

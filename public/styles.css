@@ -1,0 +1,36 @@
+html,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, Sans Serif;
+  padding: 1rem 2rem;
+  margin: 0;
+  padding: 0;
+  background-color: #c0c0c0;
+}
+
+h1 {
+  color: #2D3137;
+}
+
+li {
+  list-style: upper-alpha;
+}
+
+p {
+  color: orange;
+}
+
+input {
+  border: 1px solid #e51010;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+/*# sourceMappingURL=styles.css.map */

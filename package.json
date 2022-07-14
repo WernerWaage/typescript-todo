@@ -9,10 +9,15 @@
     "format code 🧾": "prettier --write \"src/**/*.{ts,js}\"",
     "=====": "node -v",
     "lint ": "prettier --check \"src/**/*.{ts,js}\"",
-    "build:css": "node-sass -r src -o ./public"
+    "build:css": "node-sass -r src -o ./public",
+    "npm audit fix": "npm audit fix"
+
+     
   },
   "dependencies": {
     "@adobe/lit-mobx": "^2.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
     "lit": "^2.2.7",
     "mobx": "^6.6.1",
     "node-sass": "^7.0.1",

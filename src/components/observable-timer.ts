@@ -1,4 +1,4 @@
-import { html } from 'lit'
+import { css, html } from 'lit'
 import {map} from 'lit/directives/map.js';
 import {
     makeObservable,
@@ -11,6 +11,13 @@ import { MobxLitElement } from '@adobe/lit-mobx'
 import { ObservableTimer } from './observable-timer-base'
 
 export class ObservableTimerView extends MobxLitElement {
+
+    static styles = css`
+        p {
+            color: blue;
+        }
+    `
+
     // Properties
     @observable
     public secondsPassed = myTimer.secondsPassed

@@ -3,6 +3,7 @@ import { LitElement, html, css, PropertyValues } from 'lit'
 import { customElement, state, property, query } from 'lit/decorators.js'
 import type { Task } from 'src/types/task.type'
 import { v4 as uuidv4 } from 'uuid'
+import { stylesheet } from './todo.style'
 
 export function saveTasks(tasks: Task[]) {
     localStorage.setItem('TASKS', JSON.stringify(tasks))
@@ -27,6 +28,9 @@ export class ToDoList extends MobxLitElement {
         ul {
             list-style-type: none;
         }
+
+    ${stylesheet}
+
     `
     @state()
     private _listItems: Task[] = loadTasks()
@@ -57,15 +61,18 @@ export class ToDoList extends MobxLitElement {
             : this._listItems
 
         const renderTodoList = html`
-            <ul>
+            <ul class="checkboxes">
                 ${items.map(
                     (item, index) =>
                         html` <li
                             class=${item.completed ? 'completed' : ''}
                             @click=${() => this.selectItem(item)}
                         >
+                    
                             <input
                                 type="checkbox"
+                                class="checkbox red"
+                            
                                 ?checked=${item.completed}
                                 @change=${this.toggleTaskCompleted}
                             />
@@ -87,6 +94,9 @@ export class ToDoList extends MobxLitElement {
                         </li>`
                 )}
             </ul>
+
+
+
         `
         const caughtUpMessage = html` <p>You're all caught up!</p> `
         const renderPlaceholder =

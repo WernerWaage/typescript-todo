@@ -1,9 +1,17 @@
 html,
-body,
 ul,
 ol {
   margin: 0;
   padding: 0; }
+
+body {
+  font-family: Helvetica, Sans Serif;
+  padding: 1rem 2rem;
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  color: #2D3137; }
 
 li {
   list-style: upper-alpha; }
