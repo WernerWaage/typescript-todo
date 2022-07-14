@@ -16,6 +16,7 @@
     "lit": "^2.2.7",
     "mobx": "^6.6.1",
     "node-sass": "^7.0.1",
+    "ts-lit-plugin": "^1.2.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

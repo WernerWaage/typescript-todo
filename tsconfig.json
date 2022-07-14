@@ -25,7 +25,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    /* This property needs to be true for mobx to work */
+    /* This property needs to be true for mobx to work (recommended false in lit https://lit.dev/docs/components/decorators/) */
     "useDefineForClassFields": true
   }
 }

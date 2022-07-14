@@ -4,7 +4,7 @@ export {}
 import { v4 as uuidv4 } from 'uuid'
 import type { Task } from './types/task.type'
 import { Person } from './classes/person.class'
-import { makeObservable, observable, action } from 'mobx'
+import { makeObservable, observable, action, makeAutoObservable } from 'mobx'
 import './components/my-element.ts'
 import { html, css, LitElement, render, TemplateResult } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
@@ -48,4 +48,21 @@ function getLoadTimes(): number {
     loadtimes++
     localStorage.setItem('LOADTIMES', loadtimes.toString())
     return loadtimes
+}
+
+// Model the application state.
+class ObservableTimer {
+    secondsPassed = 0
+
+    constructor() {
+        makeAutoObservable(this)
+    }
+
+    increase() {
+        this.secondsPassed += 1
+    }
+
+    reset() {
+        this.secondsPassed = 0
+    }
 }

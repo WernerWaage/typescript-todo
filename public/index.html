@@ -11,6 +11,7 @@
   <script type="module" src="/dist/index.js"></script>
 
   <script type="module" src="/dist/components/name-tag.js"></script>
+  <script type="module" src="/dist/components/observable-timer.js"></script>
 
   <title>Werners typescript template</title>
 </head>
@@ -18,13 +19,26 @@
 <body>
   <my-app></my-app>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <p id="welcomeText">Welcome to the todo list</p>
+
+  <header>
+    <div class="container">
+      <h1 id="welcomeText">Welcome to the todo list</h1>
+    </div>
+  </header>
 
   <div class="container">
-
     <todo-list></todo-list>
-
   </div>
+  <br>
+  <div class="container">
+    <observable-timer></observable-timer>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Git repository: <a href="https://github.com/WernerWaage/typescript-todo">typescript-todo</a></p>
+    </div>
+  </footer>
 </body>
 
 </html>
