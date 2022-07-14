@@ -11,7 +11,7 @@ import { customElement, property } from 'lit/decorators.js'
 import { MobxLitElement } from '@adobe/lit-mobx'
 
 // Lit element components:
-import './components/simple-greeting/simple-greeting'
+import './components/simple-greeting'
 import './components/todo.component'
 import { Timer } from './classes/timer.class'
 

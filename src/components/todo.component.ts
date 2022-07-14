@@ -1,3 +1,4 @@
+import { MobxLitElement } from '@adobe/lit-mobx'
 import { LitElement, html, css, PropertyValues } from 'lit'
 import { customElement, state, property, query } from 'lit/decorators.js'
 import type { Task } from 'src/types/task.type'
@@ -17,7 +18,7 @@ export function loadTasks(): Task[] {
 }
 
 @customElement('todo-list')
-export class ToDoList extends LitElement {
+export class ToDoList extends MobxLitElement {
     static styles = css`
         .completed {
             text-decoration-line: line-through;

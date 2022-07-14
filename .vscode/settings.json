@@ -1,3 +1,5 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "appService.defaultWebAppToDeploy": "/subscriptions/53e3928f-5a21-47c1-80e8-4021fac7cae7/microsoft.web/sites/subscriptions/53e3928f-5a21-47c1-80e8-4021fac7cae7/resourceGroups/testing-werner/providers/Microsoft.Web/sites/typescripttemplate",
+    "appService.deploySubpath": "build"
 }

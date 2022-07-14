@@ -6,12 +6,26 @@ import {
     observable,
 } from 'mobx'
 export class ObservableTimer {
-    public secondsPassed: number = -1
+    @observable
+    public secondsPassed: number = 0
+
+    @action
+    public increment() {
+        this.secondsPassed++;
+    }
+
+    @action
+    public resetTimer() {
+        this.secondsPassed =0;
+    }
+
     constructor() {
         makeAutoObservable(this, {
             secondsPassed: observable,
             handleSecondsUpdated: action,
-            staticSeconds: computed,
+            minutesPassed: computed,
+            increase: action,
+            resetTimer: action,
         })
 
         let intervalId = setInterval(() => {
@@ -20,26 +34,17 @@ export class ObservableTimer {
     }
 
     // Computed value example
-    public get staticSeconds() {
-        return 5 * this.secondsPassed
+    public get minutesPassed() {
+        return this.secondsPassed / 60;
     }
 
     increase() {
-        console.log('increasing ' + this.secondsPassed)
+        // console.log('increasing ' + this.secondsPassed)
         this.secondsPassed += 1
-    }
-
-    reset() {
-        this.secondsPassed = 0
     }
 
     // Change the seconds from outside the class (eg. not the timer)
     public handleSecondsUpdated(secondsPassed: number) {
-        console.log('Handling change')
         this.secondsPassed = secondsPassed
     }
 }
-
-// const TimerView = observer(({ timer }) => (
-//     <button onClick={() => timer.reset()}>Seconds passed: {timer.secondsPassed}</button>
-// ))

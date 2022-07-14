@@ -8,10 +8,11 @@
   <meta name="description" content="Web site created using create-snowpack-app" />
   <link rel="stylesheet" type="text/css" href="/index.css" />
   <link rel="stylesheet" type="text/css" href="/style.css" />
-  <script type="module" src="/dist/index.js"></script>
 
+  <script type="module" src="/dist/index.js"></script>
   <script type="module" src="/dist/components/name-tag.js"></script>
   <script type="module" src="/dist/components/observable-timer.js"></script>
+  <!-- <script type="module" src="/dist/components/my-element-component.js"></script> -->
 
   <title>Werners typescript template</title>
 </head>
@@ -23,6 +24,9 @@
   <header>
     <div class="container">
       <h1 id="welcomeText">Welcome to the todo list</h1>
+
+      <b>Import tasks</b>-<b>Export tasks</b>-<b>Clear tasks</b>
+
     </div>
   </header>
 
@@ -33,6 +37,11 @@
   <div class="container">
     <observable-timer></observable-timer>
   </div>
+
+  <!-- <div class="container">
+    <hr>
+    <my-element2></my-element2>
+  </div> -->
 
   <footer>
     <div class="container">

@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit'
+import { html } from 'lit'
 import {map} from 'lit/directives/map.js';
 import {
     makeObservable,
@@ -10,8 +10,9 @@ import {
 import { MobxLitElement } from '@adobe/lit-mobx'
 import { ObservableTimer } from './observable-timer-base'
 
-export class ObservableTimerView extends LitElement {
+export class ObservableTimerView extends MobxLitElement {
     // Properties
+    @observable
     public secondsPassed = myTimer.secondsPassed
 
     constructor() {
@@ -33,30 +34,21 @@ export class ObservableTimerView extends LitElement {
 
 
     render() {
-        const resetbutton = html`<button
-            @click=${() => this.forceUpdate(myTimer.secondsPassed)}
-        >
-            Test ${myTimer.staticSeconds}
-        </button><br><button @click="${this.getNewVal}">get new value</button>`
+        const resetbutton = html`<button @click=${() => this.forceUpdate(0)} >Reset timer </button>`
         return html`
             <div>
                 This is an observable timer!
-                <p>${this.secondsPassed} seconds</p>
+                <p>${myTimer.secondsPassed} seconds since last refresh</p>
                 <br />${resetbutton}
             </div>
         `
     }
 
 
-        getNewVal(){
-            let newVal = Math.floor(Math.random()*10);
-            this.secondsPassed = newVal;
-        }
-
-
     forceUpdate(newValue: number) {
-        this.secondsPassed = newValue
-        this.requestUpdate()
+        // this.secondsPassed = newValue
+        // this.requestUpdate()
+        myTimer.resetTimer()
         return null
     }
 }
