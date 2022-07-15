@@ -14,12 +14,9 @@
   },
   "dependencies": {
     "@adobe/lit-mobx": "^2.0.0",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^5.1.0",
     "lit": "^2.2.7",
     "mobx": "^6.6.1",
     "node-sass": "^7.0.1",
-    "snowpack-lit-scss-plugin": "^0.0.7",
     "ts-lit-plugin": "^1.2.1",
     "uuid": "^8.3.2"
   },

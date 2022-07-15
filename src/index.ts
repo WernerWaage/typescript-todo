@@ -1,7 +1,7 @@
 export {}
 
 // Imports
-import { v4 as uuidv4 } from 'uuid'
+
 import { Person } from './classes/person.class'
 import { observable, makeAutoObservable } from 'mobx'
 import './components/my-element.ts'
@@ -13,7 +13,6 @@ import { Timer } from './classes/timer.class'
 
 console.log('Typescript loaded  🦾 👾')
 console.log('-')
-console.log(uuidv4())
 const person = new Person('John')
 const TodoListObserver = observable(person)
 
