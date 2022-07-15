@@ -6,51 +6,30 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Web site created using create-snowpack-app" />
-  <link rel="stylesheet" type="text/css" href="/index.css" />
   <link rel="stylesheet" type="text/css" href="/styles.css" />
 
   <script type="module" src="/dist/index.js"></script>
   <script type="module" src="/dist/components/name-tag.js"></script>
   <script type="module" src="/dist/components/observable-timer.js"></script>
+  <script type="module" src="/dist/components/options-component.js"></script>
   <!-- <script type="module" src="/dist/components/my-element-component.js"></script> -->
 
   <title>Werners typescript template</title>
 </head>
 
 <body>
-  <my-app></my-app>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-
-  <header>
-    <div class="container">
-      <h1 id="welcomeText">Welcome to the todo list</h1>
-      <b>[Import tasks]</b>-<b>Export tasks</b>-<b>Clear tasks</b>
-
-    </div>
-  </header>
-
-  <div class="container">
-    <todo-list></todo-list>
-  </div>
-
   <br>
 
-  <div class="container">
-    <observable-timer></observable-timer>
-  </div>
+  <todo-list></todo-list>
+  <br>
 
-  <!-- <div class="container">
-    <hr>
-    <my-element2></my-element2>
-  </div> -->
-
-  <button class="button-1" role="button">Button 1</button>
+  <options-component></options-component>
 
   <footer>
-    <div class="container">
-      <p>Git repository: <a href="https://github.com/WernerWaage/typescript-todo">typescript-todo</a></p>
-    </div>
+    <p><a href="https://github.com/WernerWaage/typescript-todo" class="underline">typescript-todo</a></p>
   </footer>
+
 </body>
 
 </html>

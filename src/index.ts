@@ -8,7 +8,7 @@ import './components/my-element.ts'
 
 // Lit element components:
 import './components/simple-greeting'
-import './components/todo.component'
+import './components/todo-component'
 import { Timer } from './classes/timer.class'
 
 console.log('Typescript loaded  🦾 👾')

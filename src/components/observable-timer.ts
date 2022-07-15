@@ -1,5 +1,5 @@
 import { css, html } from 'lit'
-import {map} from 'lit/directives/map.js';
+import { map } from 'lit/directives/map.js'
 import {
     makeObservable,
     observable,
@@ -11,7 +11,6 @@ import { MobxLitElement } from '@adobe/lit-mobx'
 import { ObservableTimer } from './observable-timer-base'
 
 export class ObservableTimerView extends MobxLitElement {
-
     static styles = css`
         p {
             color: blue;
@@ -24,24 +23,26 @@ export class ObservableTimerView extends MobxLitElement {
 
     constructor() {
         super()
-        this.secondsPassed = 0;
+        this.secondsPassed = 0
     }
 
     // Check for updates, trigger a re-render if needed.
-    static get properties(){ return {
+    static get properties() {
+        return {
             secondsPassed: {
-            type: Number,
-            hasChanged(newVal:any, oldVal:any) {
-                if (newVal != oldVal)  return true;
-                else return false;
-            }
-            }};
+                type: Number,
+                hasChanged(newVal: any, oldVal: any) {
+                    if (newVal != oldVal) return true
+                    else return false
+                },
+            },
         }
-
-
+    }
 
     render() {
-        const resetbutton = html`<button @click=${() => this.forceUpdate(0)} >Reset timer </button>`
+        const resetbutton = html`<button @click=${() => this.forceUpdate(0)}>
+            Reset timer
+        </button>`
         return html`
             <div>
                 This is an observable timer!
@@ -50,7 +51,6 @@ export class ObservableTimerView extends MobxLitElement {
             </div>
         `
     }
-
 
     forceUpdate(newValue: number) {
         // this.secondsPassed = newValue
@@ -64,4 +64,3 @@ customElements.define('observable-timer', ObservableTimerView)
 function property() {
     throw new Error('Function not implemented.')
 }
-

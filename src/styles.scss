@@ -1,41 +1,123 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 $padding: 6px;
 $background: #c0c0c0;
 $textColor: #000;
-$headerColor: #2D3137;
+$headerColor: #2d3137;
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
 
 html,
 ul,
 ol {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
 }
 
 body {
-  font-family: Helvetica, Sans Serif;
-  padding: 1rem 2rem;
-  margin: 0;
-  padding: 0;
-  background-color: $background;
+    font-family: Helvetica, Sans Serif;
+    padding: 1rem 2rem;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    background-color: #fafafa;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(to bottom right, #c6dddf, #fdffee);
 }
 
 h1 {
-  color: $headerColor;
+    color: $headerColor;
 }
 
-li{
-  list-style: upper-alpha;
+li {
+    list-style: upper-alpha;
 }
 
 p {
-  color:orange;
+    color: orange;
 }
 
 input {
-  border: 1px solid #e51010;
-  border-radius: 4px;
-  padding: 8px;
-  margin: 8px 0;
-  width: 100%;
+    border: 1px solid #e51010;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+
+
+footer {
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+}
+
+a {
+    // display: inline-block;
+    // padding-left: 20px;
+    // transition: .3s;
+    // font-weight: bold;
+    text-decoration: underline;
+    text-decoration: none;
+    color: #0074d9;
+}
+
+a:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.underline {
+    position: relative;
+}
+
+.underline::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0074d9;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .underline:hover::before {
+        left: 0;
+        right: auto;
+        width: 100%;
+    }
+}
+
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: aliceblue;
+}
+
+.clear {
+  clear: both;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
 }

@@ -3,7 +3,10 @@ import { LitElement, html, css, PropertyValues } from 'lit'
 import { customElement, state, property, query } from 'lit/decorators.js'
 import type { Task } from 'src/types/task.type'
 import { v4 as uuidv4 } from 'uuid'
-import { stylesheet } from './todo.style'
+import { commonStylesheet } from './common-component-style'
+import { Options } from './options-class'
+ 
+
 
 export function saveTasks(tasks: Task[]) {
     localStorage.setItem('TASKS', JSON.stringify(tasks))
@@ -17,10 +20,24 @@ export function loadTasks(): Task[] {
         return []
     }
 }
-
+const myOptions = new Options()
 @customElement('todo-list')
 export class ToDoList extends MobxLitElement {
+
     static styles = css`
+        ${commonStylesheet}
+        h2 {
+            margin:20px;
+            padding-top:20px;    
+            display: block;
+            font-size: 1.5em;
+            margin-inline-start: 20px;
+            font-weight: bold;
+            line-height: 1.5em
+        }
+        .innerList {
+            padding: 1px;
+        }
         .completed {
             text-decoration-line: line-through;
             color: #777;
@@ -28,9 +45,6 @@ export class ToDoList extends MobxLitElement {
         ul {
             list-style-type: none;
         }
-
-    ${stylesheet}
-
     `
     @state()
     private _listItems: Task[] = loadTasks()
@@ -60,64 +74,61 @@ export class ToDoList extends MobxLitElement {
             ? this._listItems.filter((item) => !item.completed)
             : this._listItems
 
+        // Create the list of tasks
         const renderTodoList = html`
-            <ul class="checkboxes">
-                ${items.map(
-                    (item, index) =>
-                        html` <li
-                            class=${item.completed ? 'completed' : ''}
-                            @click=${() => this.selectItem(item)}
-                        >
-                    
-                            <input
-                                type="checkbox"
-                                class="checkbox red"
-                            
-                                ?checked=${item.completed}
-                                @change=${this.toggleTaskCompleted}
-                            />
-                            ${this._selectedItemTask!.id == item.id
-                                ? html`<span>${item.title}*</span>
-                                      <button
-                                          @click=${() =>
-                                              this._updateThing(item)}
-                                      >
-                                          Edit
-                                      </button>
-                                      <button
-                                          @click=${() =>
-                                              this._deleteThing(index)}
-                                      >
-                                          Delete
-                                      </button> `
-                                : html`<span>${item.title}</span>`}
-                        </li>`
-                )}
-            </ul>
-
-
-
+       
+            <div class="innerList">
+                <ul class="checkboxes">
+                    ${items.map(
+                        (item, index) =>
+                            html` <li
+                                class=${item.completed ? 'completed' : ''}
+                                @click=${() => this.selectItem(item)}
+                            >
+                                <input
+                                    type="checkbox"
+                                    class="checkbox red"
+                                    ?checked=${item.completed}
+                                    @change=${this.toggleTaskCompleted}
+                                />
+                                ${this._selectedItemTask!.id == item.id
+                                    ? html`<span>${item.title}*</span>
+                                          <button
+                                              @click=${() =>
+                                                  this._updateThing(item)}
+                                          >
+                                              Edit
+                                          </button>
+                                          <button
+                                              @click=${() =>
+                                                  this._deleteThing(index)}
+                                          >
+                                              Delete
+                                          </button> `
+                                    : html`<span>${item.title}</span>`}
+                            </li>`
+                    )}
+                </ul>
+            </div>
         `
         const caughtUpMessage = html` <p>You're all caught up!</p> `
         const renderPlaceholder =
             items.length > 0 ? renderTodoList : caughtUpMessage
-
+        const outputHeader = html`<h2>To Do</h2>`
         // Main output of the component:
         return html`
-            <h2>To Do</h2>
-            ${this._feedback} ${renderPlaceholder}
-            <input id="newitem" aria-label="New item" />
-            <button @click=${this.addToDo}>Add</button>
-            <br />
+            <div class="container taskContainer">
+                ${outputHeader} ${this._feedback} ${renderPlaceholder}
 
-            <label>
-                <input
-                    type="checkbox"
-                    @change=${this.setHideCompleted}
-                    ?checked=${this.hideCompleted}
-                />
-                Hide completed
-            </label>
+                <div class="inputContainer">
+                    <input id="newitem" class="input-task" aria-label="New item" />
+                    <button @click=${this.addToDo}>Add</button>
+                </div>
+                    <br />
+
+
+
+            </div>
         `
     }
 

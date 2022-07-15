@@ -11,12 +11,12 @@ export class ObservableTimer {
 
     @action
     public increment() {
-        this.secondsPassed++;
+        this.secondsPassed++
     }
 
     @action
     public resetTimer() {
-        this.secondsPassed =0;
+        this.secondsPassed = 0
     }
 
     constructor() {
@@ -35,7 +35,7 @@ export class ObservableTimer {
 
     // Computed value example
     public get minutesPassed() {
-        return this.secondsPassed / 60;
+        return this.secondsPassed / 60
     }
 
     increase() {

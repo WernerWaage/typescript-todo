@@ -6,13 +6,11 @@
     "start 🟢": "snowpack dev",
     "build 🎁": "snowpack build",
     "test 🐞": "jest",
-    "format code 🧾": "prettier --write \"src/**/*.{ts,js}\"",
+    "format code 🧾": "prettier --write \"src/**/*.{ts,js,scss}\"",
     "=====": "node -v",
-    "lint ": "prettier --check \"src/**/*.{ts,js}\"",
+    "lint ": "prettier --check \"src/**/*.{ts,js,scss}\"",
     "build:css": "node-sass -r src -o ./public",
     "npm audit fix": "npm audit fix"
-
-     
   },
   "dependencies": {
     "@adobe/lit-mobx": "^2.0.0",
@@ -21,6 +19,7 @@
     "lit": "^2.2.7",
     "mobx": "^6.6.1",
     "node-sass": "^7.0.1",
+    "snowpack-lit-scss-plugin": "^0.0.7",
     "ts-lit-plugin": "^1.2.1",
     "uuid": "^8.3.2"
   },
