@@ -34,11 +34,17 @@ export const commonStylesheet = css`
         background-color: #f082ac;
     }
 
+    h2 {
+            margin:20px;
+            padding-top:20px;    
+            display: block;
+            font-size: 1.5em;
+            margin-inline-start: 20px;
+            font-weight: bold;
+            line-height: 1.5em
+    }
+
     .taskContainer {
-        //box-shadow: outset, inset/h-offset v-offset blur spread color;
-        // width: 350px;
-        // height: 200px;
-        // border: solid 1px #555;
         max-width: 960px;
         margin: 0 auto;
         background-color: #fff;

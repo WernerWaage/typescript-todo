@@ -18,16 +18,12 @@ const TodoListObserver = observable(person)
 
 const loadtimes = getLoadTimes()
 console.log('Loaded : ' + loadtimes + ' times')
-let timerCountdown1 = new Timer(3)
-
-const welcomeText = document.getElementById('welcomeText')
-const todoHeader = document.getElementById('todoHeader')
-
-welcomeText?.addEventListener('click', function handleClick(event) {
-    console.log('clicked the header!')
-    welcomeText!.innerHTML =
-        'Todo list - You have ' + timerCountdown1.timeLeft() + ' seconds left'
-})
+ 
+// welcomeText?.addEventListener('click', function handleClick(event) {
+//     console.log('clicked the header!')
+//     welcomeText!.innerHTML =
+//         'Todo list - You have ' + timerCountdown1.timeLeft() + ' seconds left'
+// })
 
 // counter
 function getLoadTimes(): number {
@@ -44,20 +40,4 @@ function getLoadTimes(): number {
     localStorage.setItem('LOADTIMES', loadtimes.toString())
     return loadtimes
 }
-
-// Model the application state.
-class ObservableTimer {
-    secondsPassed = 0
-
-    constructor() {
-        makeAutoObservable(this)
-    }
-
-    increase() {
-        this.secondsPassed += 1
-    }
-
-    reset() {
-        this.secondsPassed = 0
-    }
-}
+ 

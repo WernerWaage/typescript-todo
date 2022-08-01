@@ -26,10 +26,11 @@ class OptionsComponent extends MobxLitElement {
         const optionsHtml = html`
             <div class="container taskContainer">
             <div>
-            Hello from options!
-            <h1 id="welcomeText">Welcome to the todo list</h1>
-            <b>[Import tasks]</b>-<b>Export tasks</b>-<b>Clear tasks</b>
-            <button class="button-1" role="button">Button 1</button>
+            <h2>Options</h2>
+
+            <button class="button-1" role="button">Import tasks</button>
+            <button class="button-1" role="button">Export tasks</button>
+            <button class="button-1" role="button">Clear tasks</button>
 
             <br>
 
@@ -37,12 +38,9 @@ class OptionsComponent extends MobxLitElement {
                 <label>
                     <input
                         type="checkbox"
-                        
                     /> Toggle completed tasks
                     <br>
 
-                    <!-- <button @click=${() => myOptions.toggle()}>Toggle Options</button>
-     -->
                 </label>
 
 

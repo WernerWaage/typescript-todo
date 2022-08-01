@@ -26,21 +26,16 @@ export class ToDoList extends MobxLitElement {
 
     static styles = css`
         ${commonStylesheet}
-        h2 {
-            margin:20px;
-            padding-top:20px;    
-            display: block;
-            font-size: 1.5em;
-            margin-inline-start: 20px;
-            font-weight: bold;
-            line-height: 1.5em
-        }
+
         .innerList {
             padding: 1px;
         }
         .completed {
             text-decoration-line: line-through;
             color: #777;
+        }
+        .feedback {
+            margin-left:20px;
         }
         ul {
             list-style-type: none;
@@ -111,18 +106,22 @@ export class ToDoList extends MobxLitElement {
                 </ul>
             </div>
         `
-        const caughtUpMessage = html` <p>You're all caught up!</p> `
+        const caughtUpMessage = html` <p class="feedback">You're all caught up!</p> `
         const renderPlaceholder =
             items.length > 0 ? renderTodoList : caughtUpMessage
         const outputHeader = html`<h2>To Do</h2>`
+
         // Main output of the component:
         return html`
             <div class="container taskContainer">
-                ${outputHeader} ${this._feedback} ${renderPlaceholder}
+                ${outputHeader}
+                <p class="feedback">${this._feedback}</p>
+                
+                ${renderPlaceholder}
 
                 <div class="inputContainer">
                     <input id="newitem" class="input-task" aria-label="New item" />
-                    <button @click=${this.addToDo}>Add</button>
+                    <button id="btnAddTodo" @click=${this.addToDo}>Add</button>
                 </div>
                     <br />
 
@@ -131,6 +130,8 @@ export class ToDoList extends MobxLitElement {
             </div>
         `
     }
+
+
 
     toggleCompleted(item: Task) {
         item.completed = !item.completed
@@ -190,3 +191,18 @@ export class ToDoList extends MobxLitElement {
         }
     }
 }
+
+    // Get the input field
+    var input = document.getElementById("newitem");
+
+    // Execute a function when the user presses a key on the keyboard
+    input?.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+        console.log("okay!")
+    document.getElementById("btnAddTodo")?.click();
+    }
+});
